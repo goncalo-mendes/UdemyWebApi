@@ -39,7 +39,7 @@ In models you can put a default value like this
 public string Name { get; set; } = 'Mendes'
 ```
 
-![WebApiStructure](https://imgur.com/dehIZNChttps://imgur.com/1MfqiAk.png)
+![WebApiStructure](https://imgur.com/dehIZNC.png)
 
 why you have a interface if you have a service? its for single injection dependency and solid stuff and for to use a service on the controller you use service -> interface -> controller
 
