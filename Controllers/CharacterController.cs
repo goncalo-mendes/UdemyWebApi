@@ -21,19 +21,19 @@ namespace dotnet_rpg.Controllers
         }
         [HttpGet]//this most for good docs and for swagger
         [Route("GetAll")]
-        public async Task<ActionResult<List<Character>>> Get()
+        public async Task<ActionResult<ServiceResponse<List<Character>>>> Get()
         {
             return Ok(await _characterService.GetAllCharacters());
         }
         [HttpGet]
         [Route("{id}")]
-        public async Task<ActionResult<Character>> getSingle(int id)
+        public async Task<ActionResult<ServiceResponse<Character>>> getSingle(int id)
         {
             return Ok(await _characterService.GetCharacter(id));
         }
         [HttpPost]
         [Route("Post1")]
-        public async Task<ActionResult<List<Character>>> AddCharacter(Character newCharacter)
+        public async Task<ActionResult<ServiceResponse<List<Character>>>> AddCharacter(Character newCharacter)
         {
             return Ok(await _characterService.addCharacter(newCharacter));
         }
