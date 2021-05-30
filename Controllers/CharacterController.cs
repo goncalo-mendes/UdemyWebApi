@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using dotnet_rpg.Models;
+using dotnet_rpg.Services.CharactersService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace dotnet_rpg.Controllers
@@ -9,30 +10,31 @@ namespace dotnet_rpg.Controllers
     [Route("[controller]")]
     public class CharacterController : ControllerBase
     {
-       private static List<Character> characters = new List<Character>
-       {
-           new Character(),
-           new Character {Name = "Sam", Id = 1},
-           new Character {Name = "Shredder"}
-       };
-       [HttpGet]//this most for good docs and for swagger
-       [Route("GetAll")]
-       public ActionResult<List<Character>> Get()
-       {
-           return Ok(characters);
-       }
-       [HttpGet]
-       [Route("{id}")]
-       public ActionResult<Character> getSingle(int id)
-       {
-           return Ok(characters.FirstOrDefault(c => c.Id == id));
-       }
-       [HttpPost]
-       [Route("Post1")]
-       public ActionResult<List<Character>> AddCharacter(Character newCharacter)
-       {
-           characters.Add(newCharacter);
-           return Ok(characters);
-       }
+       
+        private readonly ICharacterService _characterService;
+
+        public CharacterController(ICharacterService characterService)
+        {
+            this._characterService = characterService;
+
+        }
+        [HttpGet]//this most for good docs and for swagger
+        [Route("GetAll")]
+        public ActionResult<List<Character>> Get()
+        {
+            return Ok(_characterService.GetAllCharacters());
+        }
+        [HttpGet]
+        [Route("{id}")]
+        public ActionResult<Character> getSingle(int id)
+        {
+            return Ok(_characterService.GetCharacter(id));
+        }
+        [HttpPost]
+        [Route("Post1")]
+        public ActionResult<List<Character>> AddCharacter(Character newCharacter)
+        {
+            return Ok(_characterService.addCharacter(newCharacter));
+        }
     }
 }

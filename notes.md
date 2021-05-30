@@ -38,3 +38,5 @@ In models you can put a default value like this
 ```c#
 public string Name { get; set; } = 'Mendes'
 ```
+
+![WebApiStructure](https://imgur.com/dehIZNChttps://imgur.com/1MfqiAk.png)
