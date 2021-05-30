@@ -15,7 +15,7 @@ namespace dotnet_rpg.Controllers
            new Character {Name = "Sam", Id = 1},
            new Character {Name = "Shredder"}
        };
-       [HttpGet]
+       [HttpGet]//this most for good docs and for swagger
        [Route("GetAll")]
        public ActionResult<List<Character>> Get()
        {
@@ -26,6 +26,13 @@ namespace dotnet_rpg.Controllers
        public ActionResult<Character> getSingle(int id)
        {
            return Ok(characters.FirstOrDefault(c => c.Id == id));
+       }
+       [HttpPost]
+       [Route("Post1")]
+       public ActionResult<List<Character>> AddCharacter(Character newCharacter)
+       {
+           characters.Add(newCharacter);
+           return Ok(characters);
        }
     }
 }
