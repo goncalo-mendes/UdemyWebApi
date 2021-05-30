@@ -40,3 +40,7 @@ public string Name { get; set; } = 'Mendes'
 ```
 
 ![WebApiStructure](https://imgur.com/dehIZNChttps://imgur.com/1MfqiAk.png)
+
+why you have a interface if you have a service? its for single injection dependency and solid stuff and for to use a service on the controller you use service -> interface -> controller
+
+os models its simply to the database stuff

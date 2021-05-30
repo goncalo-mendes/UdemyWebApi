@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using dotnet_rpg.Models;
 using dotnet_rpg.Services.CharactersService;
 using Microsoft.AspNetCore.Mvc;
@@ -20,21 +21,21 @@ namespace dotnet_rpg.Controllers
         }
         [HttpGet]//this most for good docs and for swagger
         [Route("GetAll")]
-        public ActionResult<List<Character>> Get()
+        public async Task<ActionResult<List<Character>>> Get()
         {
-            return Ok(_characterService.GetAllCharacters());
+            return Ok(await _characterService.GetAllCharacters());
         }
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Character> getSingle(int id)
+        public async Task<ActionResult<Character>> getSingle(int id)
         {
-            return Ok(_characterService.GetCharacter(id));
+            return Ok(await _characterService.GetCharacter(id));
         }
         [HttpPost]
         [Route("Post1")]
-        public ActionResult<List<Character>> AddCharacter(Character newCharacter)
+        public async Task<ActionResult<List<Character>>> AddCharacter(Character newCharacter)
         {
-            return Ok(_characterService.addCharacter(newCharacter));
+            return Ok(await _characterService.addCharacter(newCharacter));
         }
     }
 }
