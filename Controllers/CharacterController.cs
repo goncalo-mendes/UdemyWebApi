@@ -32,10 +32,10 @@ namespace dotnet_rpg.Controllers
             return Ok(await _characterService.GetCharacter(id));
         }
         [HttpPost]
-        [Route("Post1")]
+        [Route("AddCharacter")]
         public async Task<ActionResult<ServiceResponse<List<Character>>>> AddCharacter(Character newCharacter)
         {
-            return Ok(await _characterService.addCharacter(newCharacter));
+            return Ok(await _characterService.AddCharacter(newCharacter));
         }
     }
 }
